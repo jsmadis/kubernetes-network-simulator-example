@@ -48,7 +48,7 @@ public class DataGeneratorExampleTest extends AbstractTest {
     }
 
     @Test
-    public void deviceCanSeeDeviceInOtherNetwork() throws IOException, InterruptedException {
+    public void deployedDataGeneratorIsAccessibleFromOtherNetwork() throws IOException, InterruptedException {
         // Create network and deploy data generator inside the network
         KubeNetwork deviceNetwork = new KubeNetwork("my-nice-network");
         controller.createNetwork(deviceNetwork);

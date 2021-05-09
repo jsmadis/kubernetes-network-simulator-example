@@ -16,8 +16,8 @@ import java.util.Objects;
 
 /**
  * Class representing request bin object of https://requestbin.io website.
- * Request bin is used for webhook testing and in the scenario provides a service
- * where we can send HTTP requests and collect them.
+ * Request bin is used for webhook testing. It provides a service
+ * where we can send HTTP requests, the requests are stored and we can collect them afterwards.
  */
 public class RequestBin {
     private static final String REQUEST_BIN_URL = "https://requestbin.io";
