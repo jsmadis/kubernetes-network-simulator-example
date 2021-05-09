@@ -22,6 +22,7 @@ public class DataGeneratorExampleTest extends AbstractTest {
 
     @Test
     public void deployDataGeneratorDeviceTest() throws ConnectorException, IOException {
+        // Create network and deploy DataGenerator inside it
         KubeNetwork network = new KubeNetwork("example-network");
         controller.createNetwork(network);
 
@@ -36,11 +37,13 @@ public class DataGeneratorExampleTest extends AbstractTest {
         // we need to enable communication with IP address of this machine
         controller.deviceIsSeenBy(kubeDevice, Utils.getLocalIp());
 
+        // Create CoapControlClient for deployed device
         CoapControlClient client = new CoapControlClient(
                 String.format("coap://%s:%s",
                         kubeDevice.getPublicIpAddress(),
                         kubeDevice.getManagementPort().getPort()));
 
+        // Assert that the device is accessible with CoAP protocol
         assertTrue(new String(client.get("/sensor/simpleThermometer").getPayload()).contains("Thermometer"));
     }
 
@@ -71,12 +74,15 @@ public class DataGeneratorExampleTest extends AbstractTest {
 
         Thread.sleep(5000);
 
+        // Make HTTP request to HTTP_COAP_TESTING_APP which is deployed inside simulated network
+        // The app will make CoAP request based on the parameters and returns response of the request
         String hostname = Utils.httpTestingHostname(app, "/get");
         String result = httpClient.get(hostname,
                 kubeDevice.getPrivateIpAddress(),
                 5683,
                 "/sensor/simpleThermometer");
 
+        // Asserts that the response was successful and the DataGenerator replied with data
         assertTrue(result.contains("Thermometer"), result);
     }
 }
