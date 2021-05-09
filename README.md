@@ -54,7 +54,7 @@ Since the simulation blocks traffic to the deployed devices,
 we need to specify the machine's IP address from which we are running the tests.
 The tests are communicating with the deployed devices.
 
-If you are using calico CNI, you can easily export the **PATRIOT_LOCAL_IP_ADDR** with the follwing command:
+If you are running minikube and using calico CNI, you can easily export the **PATRIOT_LOCAL_IP_ADDR** with the following command:
 ```shell
 $ export PATRIOT_LOCAL_IP_ADDR=$(kubectl cluster-info dump | \
   grep "projectcalico.org/IPv4Address" | \
