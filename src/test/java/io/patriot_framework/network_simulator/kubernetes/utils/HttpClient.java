@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Represents class used for making HTTP requests.
+ * It provides methods used in the testing
+ */
 public class HttpClient {
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
