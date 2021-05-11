@@ -35,7 +35,7 @@ It will take a couple of minutes to start all necessary services in the Kubernet
 
 You can check if everything is up and running with the following command:
 ```shell
-$ kubectl get pods --all-namespace
+$ kubectl get pods --all-namespaces
 ```
 
 
