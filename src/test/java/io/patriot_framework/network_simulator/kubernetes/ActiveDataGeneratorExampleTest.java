@@ -45,8 +45,6 @@ public class ActiveDataGeneratorExampleTest extends AbstractTest{
 
         Thread.sleep(60000);
 
-        controller.destroyDevice(kubeDevice);
-
         // Asserts that request bin got HTTP calls and the number of calls
         // that contained the body with data (part of the string sent by the active device) is higher than 4
         assertTrue(requestBin
