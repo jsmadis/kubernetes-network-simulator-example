@@ -9,6 +9,7 @@ import io.patriot_framework.network_simulator.kubernetes.device.Application;
 import io.patriot_framework.network_simulator.kubernetes.device.DataGenerator;
 import io.patriot_framework.network_simulator.kubernetes.device.DeviceConfig;
 import io.patriot_framework.network_simulator.kubernetes.device.KubeDevice;
+import io.patriot_framework.network_simulator.kubernetes.exceptions.KubernetesSimulationException;
 import io.patriot_framework.network_simulator.kubernetes.network.KubeNetwork;
 import io.patriot_framework.network_simulator.kubernetes.utils.Utils;
 import org.eclipse.californium.elements.exception.ConnectorException;
@@ -21,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DataGeneratorExampleTest extends AbstractTest {
 
     @Test
-    public void deployDataGeneratorDeviceTest() throws ConnectorException, IOException {
+    public void deployDataGeneratorDeviceTest() throws ConnectorException, IOException, KubernetesSimulationException {
         // Create network and deploy DataGenerator inside it
         KubeNetwork network = new KubeNetwork("example-network");
         controller.createNetwork(network);
@@ -48,7 +49,7 @@ public class DataGeneratorExampleTest extends AbstractTest {
     }
 
     @Test
-    public void deployedDataGeneratorIsAccessibleFromOtherNetwork() throws IOException, InterruptedException {
+    public void deployedDataGeneratorIsAccessibleFromOtherNetwork() throws IOException, InterruptedException, KubernetesSimulationException {
         // Create network and deploy data generator inside the network
         KubeNetwork deviceNetwork = new KubeNetwork("my-nice-network");
         controller.createNetwork(deviceNetwork);

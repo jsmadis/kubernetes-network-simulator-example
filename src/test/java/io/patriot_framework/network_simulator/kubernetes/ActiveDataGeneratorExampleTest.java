@@ -12,6 +12,7 @@ import io.patriot_framework.generator.network.Rest;
 import io.patriot_framework.generator.network.wrappers.JSONWrapper;
 import io.patriot_framework.network_simulator.kubernetes.device.ActiveDataGenerator;
 import io.patriot_framework.network_simulator.kubernetes.device.KubeDevice;
+import io.patriot_framework.network_simulator.kubernetes.exceptions.KubernetesSimulationException;
 import io.patriot_framework.network_simulator.kubernetes.network.KubeNetwork;
 import io.patriot_framework.network_simulator.kubernetes.utils.RequestBin;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ActiveDataGeneratorExampleTest extends AbstractTest{
     @Test
-    public void createActiveDataGeneratorDeviceTest() throws IOException, InterruptedException {
+    public void createActiveDataGeneratorDeviceTest() throws IOException, InterruptedException, KubernetesSimulationException {
         // Creates request bin instance which is used for testing webhooks
         RequestBin requestBin = new RequestBin();
 
