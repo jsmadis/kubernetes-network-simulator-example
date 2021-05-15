@@ -1,6 +1,7 @@
 package io.patriot_framework.network_simulator.kubernetes.utils;
 
 import com.google.gson.Gson;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -20,6 +21,7 @@ import java.util.Objects;
  * where we can send HTTP requests, the requests are stored and we can collect them afterwards.
  */
 public class RequestBin {
+    public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private static final String REQUEST_BIN_URL = "https://requestbin.io";
     private static final String API_SUFFIX = "/api/v1/bins";
     private final Gson gson = new Gson();
@@ -37,13 +39,14 @@ public class RequestBin {
 
     /**
      * Returns list of received webhooks
+     *
      * @return List of RequestBinResults
      */
     public List<RequestBinResult> getLatestResults() throws IOException {
         Request request = new Request
                 .Builder()
                 .get()
-                .url(String.format("%s%s/%s/requests", REQUEST_BIN_URL, API_SUFFIX, name ))
+                .url(String.format("%s%s/%s/requests", REQUEST_BIN_URL, API_SUFFIX, name))
                 .build();
         String responseData;
         try (Response response = client.newCall(request).execute()) {
@@ -58,7 +61,7 @@ public class RequestBin {
     private String createRequestBinInstance() throws IOException {
         Request request = new Request
                 .Builder()
-                .post(RequestBody.create(HttpClient.JSON, ""))
+                .post(RequestBody.create(JSON, ""))
                 .url(REQUEST_BIN_URL + API_SUFFIX)
                 .build();
 

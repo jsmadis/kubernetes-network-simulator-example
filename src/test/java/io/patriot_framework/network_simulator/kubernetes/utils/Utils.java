@@ -1,12 +1,11 @@
 package io.patriot_framework.network_simulator.kubernetes.utils;
 
-import io.patriot_framework.network_simulator.kubernetes.device.KubeDevice;
-
 public class Utils {
-    public static final String HTTP_COAP_TESTING_APP_IMAGE = "jsmadis/patriot-http-coap-testing-app:latest";
+    public static final String HTTP_STORAGE_CALLS_APP = "jsmadis/http-calls-storage-app:latest";
 
     /**
      * Returns Kubernetes URL where to run the tests.
+     *
      * @return kubernetes URL
      */
     public static String getKubernetesUrl() {
@@ -34,7 +33,7 @@ public class Utils {
         return ip;
     }
 
-    public static String httpTestingHostname(KubeDevice device, String path) {
-        return String.format("http://%s:%s%s", device.getPublicIpAddress(), device.getManagementPort().getPort(), path);
+    public static String deviceToURL(String hostname, int port, String path) {
+        return String.format("http://%s:%s%s", hostname, port, path);
     }
 }

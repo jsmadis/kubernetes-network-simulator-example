@@ -7,14 +7,12 @@ import io.fabric8.kubernetes.client.KubernetesClient;
 import io.patriot_framework.network_simulator.kubernetes.control.Controller;
 import io.patriot_framework.network_simulator.kubernetes.control.KubernetesController;
 import io.patriot_framework.network_simulator.kubernetes.manager.KubernetesManager;
-import io.patriot_framework.network_simulator.kubernetes.utils.HttpClient;
 import io.patriot_framework.network_simulator.kubernetes.utils.Utils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 public abstract class AbstractTest {
     protected static Controller controller;
-    protected HttpClient httpClient = new HttpClient();
     private static KubernetesManager manager;
 
     @BeforeAll
